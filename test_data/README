@@ -1,0 +1,4 @@
+An example ATLAS tracklet composed of 4 exposures.
+Each frame is centred on the detcted moving object.
+There is a set of reduced data including the background stars, this is used to compare the possible comet PSF to the stellar PSF (comets are spread out).
+The diff data has had the background stars removed, leaving only the transient features. This is stacked to boost the comet signal and to examine the coma.
