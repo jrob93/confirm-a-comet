@@ -1,0 +1,7 @@
+tpv.fits
+There appears to be problems loading ATLAS fits files into astropy. 
+There are non-standard WCS flags in the headers. 
+Therefore we remove all flags that are not in the standard tpv.fits file header, this way we can produce "fixed" fits files that can then be loaded as CCDData objects to be stacked.
+
+sextractor_files
+This directory contains the .sex, .params and .conv files required to do the sextractor PSF fitting.

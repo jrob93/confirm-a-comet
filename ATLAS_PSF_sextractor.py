@@ -38,8 +38,10 @@ for i,fi in enumerate(file_list):
     break
 
 # run the sextractor command here:
-# sex 02a58833o0083o.fits.fz -c extra_files/sextractor_files/default.sex
-p=subprocess.Popen('source-extractor {} -c {}'.format(fi,sex_settings),shell=True)
+# sex 02a58833o0083o.fits.fz -c extra_files/sextractor_files/default.set_xlim
+sex_cmd='source-extractor {} -c {}'.format(fi,sex_settings)
+print(sex_cmd)
+p=subprocess.Popen(sex_cmd,shell=True)
 
 # load the sextractor data
 data=ascii.read(sex_save_file)
