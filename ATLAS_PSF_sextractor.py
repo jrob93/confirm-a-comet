@@ -1,3 +1,7 @@
+'''
+Run sextractor on a reduced ATLAS image and plot the resulting FWHMs onto the candidate comet and background stars.
+'''
+
 import glob
 import numpy as np
 import matplotlib.pyplot as pyplot
@@ -11,7 +15,12 @@ from astropy.io import ascii
 from photutils import aperture_photometry, CircularAperture
 
 path="./test_data/atlas_T05-T2394163-reduced/"
-file_list=glob.glob("{}/*.fits.fz".format(path))
+data_extension=".fits.fz"
+sex_settings="extra_files/sextractor_files/default.sex"
+sex_save_file="test_results/test.cat"
+
+# find all the reduced data files
+file_list=glob.glob("{}/*{}".format(path,data_extension))
 file_list.sort()
 print(file_list)
 
@@ -30,10 +39,10 @@ for i,fi in enumerate(file_list):
 
 # run the sextractor command here:
 # sex 02a58833o0083o.fits.fz -c extra_files/sextractor_files/default.sex
-p=subprocess.Popen('source-extractor {} -c extra_files/sextractor_files/default.sex'.format(fi),shell=True)
+p=subprocess.Popen('source-extractor {} -c {}'.format(fi,sex_settings),shell=True)
 
 # load the sextractor data
-data=ascii.read("test_results/test.cat")
+data=ascii.read(sex_save_file)
 positions = np.transpose((data["X_IMAGE"], data["Y_IMAGE"]))
 
 # sextractor doesn't index from zero?
@@ -57,6 +66,9 @@ y_range=100
 ax1.set_xlim(mid_x-x_range,mid_x+x_range)
 ax1.set_ylim(mid_y-y_range,mid_y+y_range)
 
+ax1.set_xlabel("x pixels")
+ax1.set_ylabel("y pixels")
+
 #display the image, note that you need to set the origin
 s1=ax1.imshow(img, norm=norm, origin='lower')
 
@@ -77,5 +89,6 @@ r = Rectangle((mid_x-x_len/2, mid_y-y_len/2), x_len, y_len, edgecolor='yellow', 
 ax1.add_patch(r)
 
 cbar1=fig.colorbar(s1)
+cbar1.set_label("counts")
 
 pyplot.show()
