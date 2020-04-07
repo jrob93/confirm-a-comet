@@ -9,6 +9,6 @@ Draw this onto the coma and obtain the size and direction for the MPC new comet 
 
 ATLAS_PSF_sextractor.py: To confirm cometary activity one usually compares the PSF of the detected object to the comae of background stars. 
 
-Here we use the source-extractor, which should be installed on your machine as the sex command.This can be found on github at https://sextractor.readthedocs.io/en/latest/index.html
+Here we use the source-extractor, which should be installed on your machine as the sex command. This can be found on github at https://sextractor.readthedocs.io/en/latest/index.html
 and the original paper (Bertin and Arnouts 1996)is at
 https://aas.aanda.org/articles/aas/abs/1996/08/ds1060/ds1060.html
