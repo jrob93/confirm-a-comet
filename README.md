@@ -7,5 +7,9 @@ With the stacked image, use ds9 to measure length and direction of tail. This ca
 
 Draw this onto the coma and obtain the size and direction for the MPC new comet report.
 
-ATLAS_PSF_sextractor.py: To confirm cometary activity one usually compares the PSF of the detected object to the comae of background stars. 
+ATLAS_PSF_sextractor.py: To confirm cometary activity one usually compares the PSF of the detected object to the comae of background stars.
 Here we use the source-extractor, which should be installed on your machine as the sex command.
+
+A very faint asteroid may appear fuzzy, due to low signal to noise.
+FWHM of the candidate should be compared to FWHM of similar brightness stars.
+Comets will most likely have low motion across the sky.
