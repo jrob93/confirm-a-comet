@@ -1,5 +1,5 @@
-NUMBER                   Running object number                                    
-#EXT_NUMBER               FITS extension number                                    
+NUMBER                   Running object number
+#EXT_NUMBER               FITS extension number
 #FLUX_ISO                 Isophotal flux                                            [count]
 #FLUXERR_ISO              RMS error for isophotal flux                              [count]
 #MAG_ISO                  Isophotal magnitude                                       [mag]
@@ -32,10 +32,10 @@ NUMBER                   Running object number
 #FLUXERR_SOMFIT           RMS error for SOMFIT flux                                 [count]
 #MAG_SOMFIT               Magnitude derived from SOM fit                            [mag]
 #MAGERR_SOMFIT            Magnitude error derived from SOM fit                      [mag]
-#ERROR_SOMFIT             Reduced Chi-square error of the SOM fit                  
-#VECTOR_SOMFIT            Position vector of the winning SOM node                  
-#KRON_RADIUS              Kron apertures in units of A or B                        
-#PETRO_RADIUS             Petrosian apertures in units of A or B                   
+#ERROR_SOMFIT             Reduced Chi-square error of the SOM fit
+#VECTOR_SOMFIT            Position vector of the winning SOM node
+#KRON_RADIUS              Kron apertures in units of A or B
+#PETRO_RADIUS             Petrosian apertures in units of A or B
 #BACKGROUND               Background at centroid position                           [count]
 #THRESHOLD                Detection threshold above background                      [count]
 #FLUX_MAX                 Peak flux above background                                [count]
@@ -47,8 +47,8 @@ NUMBER                   Running object number
 #YMAX_IMAGE               Maximum y-coordinate among detected pixels                [pixel]
 #XPEAK_IMAGE              x-coordinate of the brightest pixel                       [pixel]
 #YPEAK_IMAGE              y-coordinate of the brightest pixel                       [pixel]
-#XPEAK_FOCAL              Focal-plane x coordinate of the brightest pixel          
-#YPEAK_FOCAL              Focal-plane y coordinate of the brightest pixel          
+#XPEAK_FOCAL              Focal-plane x coordinate of the brightest pixel
+#YPEAK_FOCAL              Focal-plane y coordinate of the brightest pixel
 #XPEAK_WORLD              World-x coordinate of the brightest pixel                 [deg]
 #YPEAK_WORLD              World-y coordinate of the brightest pixel                 [deg]
 #ALPHAPEAK_SKY            Right ascension of brightest pix (native)                 [deg]
@@ -61,8 +61,8 @@ X_IMAGE                  Object position along x                                
 Y_IMAGE                  Object position along y                                   [pixel]
 #X_IMAGE_DBL              Object position along x (double precision)                [pixel]
 #Y_IMAGE_DBL              Object position along y (double precision)                [pixel]
-#X_FOCAL                  Barycenter position along focal-plane x axis             
-#Y_FOCAL                  Barycenter position along focal-plane y axis             
+#X_FOCAL                  Barycenter position along focal-plane x axis
+#Y_FOCAL                  Barycenter position along focal-plane y axis
 #X_WORLD                  Barycenter position along world x axis                    [deg]
 #Y_WORLD                  Barycenter position along world y axis                    [deg]
 #X_MAMA                   Barycenter position along MAMA x axis                     [m**(-6)]
@@ -117,8 +117,8 @@ Y_IMAGE                  Object position along y                                
 #ERRTHETA_B1950           B1950 error ellipse pos. angle (east of north)            [deg]
 #XWIN_IMAGE               Windowed position estimate along x                        [pixel]
 #YWIN_IMAGE               Windowed position estimate along y                        [pixel]
-#XWIN_FOCAL               Windowed position along focal-plane x axis               
-#YWIN_FOCAL               Windowed position along focal-plane y axis               
+#XWIN_FOCAL               Windowed position along focal-plane x axis
+#YWIN_FOCAL               Windowed position along focal-plane y axis
 #XWIN_WORLD               Windowed position along world x axis                      [deg]
 #YWIN_WORLD               Windowed position along world y axis                      [deg]
 #ALPHAWIN_SKY             Windowed right ascension  (native)                        [deg]
@@ -169,7 +169,7 @@ Y_IMAGE                  Object position along y                                
 #ERRTHETAWIN_SKY          Native windowed error ellipse pos. angle (east of north)  [deg]
 #ERRTHETAWIN_J2000        J2000 windowed error ellipse pos. angle (east of north)   [deg]
 #ERRTHETAWIN_B1950        B1950 windowed error ellipse pos. angle (east of north)   [deg]
-#NITER_WIN                Number of iterations for WIN centering                   
+#NITER_WIN                Number of iterations for WIN centering
 #MU_THRESHOLD             Detection threshold above background                      [mag * arcsec**(-2)]
 #MU_MAX                   Peak surface brightness above background                  [mag * arcsec**(-2)]
 #ISOAREA_WORLD            Isophotal area above Analysis threshold                   [deg**2]
@@ -182,26 +182,26 @@ Y_IMAGE                  Object position along y                                
 #ISO5                     Isophotal area at level 5                                 [pixel**2]
 #ISO6                     Isophotal area at level 6                                 [pixel**2]
 #ISO7                     Isophotal area at level 7                                 [pixel**2]
-#FLAGS                    Extraction flags                                         
-#FLAGS_WEIGHT             Weighted extraction flags                                
-#FLAGS_WIN                Flags for WINdowed parameters                            
-#IMAFLAGS_ISO             FLAG-image flags OR'ed over the iso. profile             
-#NIMAFLAGS_ISO            Number of flagged pixels entering IMAFLAGS_ISO           
-#NLOWWEIGHT_ISO           Nb of pixels with low weight over the iso. profile       
-#NLOWDWEIGHT_ISO          Nb of pixels with low det. weight over the iso. profile  
+#FLAGS                    Extraction flags
+#FLAGS_WEIGHT             Weighted extraction flags
+#FLAGS_WIN                Flags for WINdowed parameters
+#IMAFLAGS_ISO             FLAG-image flags OR'ed over the iso. profile
+#NIMAFLAGS_ISO            Number of flagged pixels entering IMAFLAGS_ISO
+#NLOWWEIGHT_ISO           Nb of pixels with low weight over the iso. profile
+#NLOWDWEIGHT_ISO          Nb of pixels with low det. weight over the iso. profile
 FWHM_IMAGE               FWHM assuming a gaussian core                             [pixel]
 FWHM_WORLD               FWHM assuming a gaussian core                             [deg]
-#ELONGATION               A_IMAGE/B_IMAGE                                          
-#ELLIPTICITY              1 - B_IMAGE/A_IMAGE                                      
-#POLAR_IMAGE              (A_IMAGE^2 - B_IMAGE^2)/(A_IMAGE^2 + B_IMAGE^2)          
-#POLAR_WORLD              (A_WORLD^2 - B_WORLD^2)/(A_WORLD^2 + B_WORLD^2)          
-#POLARWIN_IMAGE           (AWIN^2 - BWIN^2)/(AWIN^2 + BWIN^2)                      
-#POLARWIN_WORLD           (AWIN^2 - BWIN^2)/(AWIN^2 + BWIN^2)                      
-#CLASS_STAR               S/G classifier output                                    
+#ELONGATION               A_IMAGE/B_IMAGE
+#ELLIPTICITY              1 - B_IMAGE/A_IMAGE
+#POLAR_IMAGE              (A_IMAGE^2 - B_IMAGE^2)/(A_IMAGE^2 + B_IMAGE^2)
+#POLAR_WORLD              (A_WORLD^2 - B_WORLD^2)/(A_WORLD^2 + B_WORLD^2)
+#POLARWIN_IMAGE           (AWIN^2 - BWIN^2)/(AWIN^2 + BWIN^2)
+#POLARWIN_WORLD           (AWIN^2 - BWIN^2)/(AWIN^2 + BWIN^2)
+#CLASS_STAR               S/G classifier output
 #VIGNET                   Pixel data around detection                               [count]
 #VIGNET_SHIFT             Pixel data around detection, corrected for shift          [count]
-#VECTOR_ASSOC             ASSOCiated parameter vector                              
-#NUMBER_ASSOC             Number of ASSOCiated IDs                                 
+#VECTOR_ASSOC             ASSOCiated parameter vector
+#NUMBER_ASSOC             Number of ASSOCiated IDs
 #THRESHOLDMAX             Maximum threshold possible for detection                  [count]
 #FLUX_GROWTH              Cumulated growth-curve                                    [count]
 #FLUX_GROWTHSTEP          Step for growth-curves                                    [pixel]
@@ -220,10 +220,10 @@ FWHM_WORLD               FWHM assuming a gaussian core                          
 #DELTAPSF_B1950           Declination of the fitted PSF (B1950)                     [deg]
 #FLUX_PSF                 Flux from PSF-fitting                                     [count]
 #FLUXERR_PSF              RMS flux error for PSF-fitting                            [count]
-#MAG_PSF                  Magnitude from PSF-fitting                                [mag]
+MAG_PSF                  Magnitude from PSF-fitting                                [mag]
 #MAGERR_PSF               RMS magnitude error from PSF-fitting                      [mag]
-#NITER_PSF                Number of iterations for PSF-fitting                     
-#CHI2_PSF                 Reduced chi2 from PSF-fitting                            
+#NITER_PSF                Number of iterations for PSF-fitting
+#CHI2_PSF                 Reduced chi2 from PSF-fitting
 #ERRX2PSF_IMAGE           Variance of PSF position along x                          [pixel**2]
 #ERRY2PSF_IMAGE           Variance of PSF position along y                          [pixel**2]
 #ERRXYPSF_IMAGE           Covariance of PSF position between x and y                [pixel**2]
@@ -246,12 +246,12 @@ FWHM_WORLD               FWHM assuming a gaussian core                          
 #ERRTHETAPSF_J2000        J2000 PSF error ellipse pos. angle (east of north)        [deg]
 #ERRTHETAPSF_B1950        B1950 PSF error ellipse pos. angle (east of north)        [deg]
 #DURATION_ANALYSIS        Duration of analysis for this source                      [s]
-#VECTOR_MODEL             Model-fitting coefficients                               
-#VECTOR_MODELERR          Model-fitting coefficient uncertainties                  
-#MATRIX_MODELERR          Model-fitting covariance matrix                          
-#CHI2_MODEL               Reduced Chi2 of the fit                                  
-#FLAGS_MODEL              Model-fitting flags                                      
-#NITER_MODEL              Number of iterations for model-fitting                   
+#VECTOR_MODEL             Model-fitting coefficients
+#VECTOR_MODELERR          Model-fitting coefficient uncertainties
+#MATRIX_MODELERR          Model-fitting covariance matrix
+#CHI2_MODEL               Reduced Chi2 of the fit
+#FLAGS_MODEL              Model-fitting flags
+#NITER_MODEL              Number of iterations for model-fitting
 #FLUX_MODEL               Flux from model-fitting                                   [count]
 #FLUXERR_MODEL            RMS error on model-fitting flux                           [count]
 #MAG_MODEL                Magnitude from model-fitting                              [mag]
@@ -264,8 +264,8 @@ FWHM_WORLD               FWHM assuming a gaussian core                          
 #MU_MEAN_MODEL            Mean effective model surface brightness above background  [mag * arcsec**(-2)]
 #XMODEL_IMAGE             X coordinate from model-fitting                           [pixel]
 #YMODEL_IMAGE             Y coordinate from model-fitting                           [pixel]
-#XFOCAL_WORLD             Fitted position along focal-plane x axis                 
-#YFOCAL_WORLD             Fitted position along focal-plane y axis                 
+#XFOCAL_WORLD             Fitted position along focal-plane x axis
+#YFOCAL_WORLD             Fitted position along focal-plane y axis
 #XMODEL_WORLD             Fitted position along world x axis                        [deg]
 #YMODEL_WORLD             Fitted position along world y axis                        [deg]
 #ALPHAMODEL_SKY           Fitted position along right ascension  (native)           [deg]
@@ -298,29 +298,29 @@ FWHM_WORLD               FWHM assuming a gaussian core                          
 #X2MODEL_IMAGE            Variance along x from model-fitting                       [pixel**2]
 #Y2MODEL_IMAGE            Variance along y from model-fitting                       [pixel**2]
 #XYMODEL_IMAGE            Covariance between x and y from model-fitting             [pixel**2]
-#ELLIP1MODEL_IMAGE        Ellipticity component from model-fitting                 
-#ELLIP2MODEL_IMAGE        Ellipticity component from model-fitting                 
-#POLAR1MODEL_IMAGE        Ellipticity component (quadratic) from model-fitting     
-#POLAR2MODEL_IMAGE        Ellipticity component (quadratic) from model-fitting     
-#ELLIP1ERRMODEL_IMAGE     Ellipticity component std.error from model-fitting       
-#ELLIP2ERRMODEL_IMAGE     Ellipticity component std.error from model-fitting       
-#ELLIPCORRMODEL_IMAGE     Corr.coeff between ellip.components from model-fitting   
-#POLAR1ERRMODEL_IMAGE     Polarisation component std.error from model-fitting      
-#POLAR2ERRMODEL_IMAGE     Polarisation component std.error from model-fitting      
-#POLARCORRMODEL_IMAGE     Corr.coeff between polar. components from fitting        
+#ELLIP1MODEL_IMAGE        Ellipticity component from model-fitting
+#ELLIP2MODEL_IMAGE        Ellipticity component from model-fitting
+#POLAR1MODEL_IMAGE        Ellipticity component (quadratic) from model-fitting
+#POLAR2MODEL_IMAGE        Ellipticity component (quadratic) from model-fitting
+#ELLIP1ERRMODEL_IMAGE     Ellipticity component std.error from model-fitting
+#ELLIP2ERRMODEL_IMAGE     Ellipticity component std.error from model-fitting
+#ELLIPCORRMODEL_IMAGE     Corr.coeff between ellip.components from model-fitting
+#POLAR1ERRMODEL_IMAGE     Polarisation component std.error from model-fitting
+#POLAR2ERRMODEL_IMAGE     Polarisation component std.error from model-fitting
+#POLARCORRMODEL_IMAGE     Corr.coeff between polar. components from fitting
 #X2MODEL_WORLD            Variance along X-WORLD (alpha) from model-fitting         [deg**2]
 #Y2MODEL_WORLD            Variance along Y_WORLD (delta) from model-fitting         [deg**2]
 #XYMODEL_WORLD            Covariance between X-WORLD and Y-WORLD from model-fitting [deg**2]
-#ELLIP1MODEL_WORLD        Ellipticity component from model-fitting                 
-#ELLIP2MODEL_WORLD        Ellipticity component from model-fitting                 
-#POLAR1MODEL_WORLD        Polarisation component from model-fitting                
-#POLAR2MODEL_WORLD        Polarisation component from model-fitting                
-#ELLIP1ERRMODEL_WORLD     Ellipticity component std.error from model-fitting       
-#ELLIP2ERRMODEL_WORLD     Ellipticity component std.error from model-fitting       
-#ELLIPCORRMODEL_WORLD     Corr.coeff between ellip.components from model-fitting   
-#POLAR1ERRMODEL_WORLD     Polarisation component std.error from model-fitting      
-#POLAR2ERRMODEL_WORLD     Polarisation component std.error from model-fitting      
-#POLARCORRMODEL_WORLD     Corr.coeff between polar. components from fitting        
+#ELLIP1MODEL_WORLD        Ellipticity component from model-fitting
+#ELLIP2MODEL_WORLD        Ellipticity component from model-fitting
+#POLAR1MODEL_WORLD        Polarisation component from model-fitting
+#POLAR2MODEL_WORLD        Polarisation component from model-fitting
+#ELLIP1ERRMODEL_WORLD     Ellipticity component std.error from model-fitting
+#ELLIP2ERRMODEL_WORLD     Ellipticity component std.error from model-fitting
+#ELLIPCORRMODEL_WORLD     Corr.coeff between ellip.components from model-fitting
+#POLAR1ERRMODEL_WORLD     Polarisation component std.error from model-fitting
+#POLAR2ERRMODEL_WORLD     Polarisation component std.error from model-fitting
+#POLARCORRMODEL_WORLD     Corr.coeff between polar. components from fitting
 #CXXMODEL_IMAGE           Cxx ellipse parameter from model-fitting                  [pixel**(-2)]
 #CYYMODEL_IMAGE           Cyy ellipse parameter from model-fittinh                  [pixel**(-2)]
 #CXYMODEL_IMAGE           Cxy ellipse parameter from model-fitting                  [pixel**(-2)]
@@ -336,8 +336,8 @@ FWHM_WORLD               FWHM assuming a gaussian core                          
 #THETAMODEL_SKY           Model position angle (east of north) (native)             [deg]
 #THETAMODEL_J2000         Model position angle (east of north) (J2000)              [deg]
 #THETAMODEL_B1950         Model position angle (east of north) (B1950)              [deg]
-#SPREAD_MODEL             Spread parameter from model-fitting                      
-#SPREADERR_MODEL          Spread parameter error from model-fitting                
+#SPREAD_MODEL             Spread parameter from model-fitting
+#SPREADERR_MODEL          Spread parameter error from model-fitting
 #FLUX_BACKOFFSET          Background offset from fitting                            [count]
 #FLUXERR_BACKOFFSET       RMS error on fitted background offset                     [count]
 #FLUX_POINTSOURCE         Point source flux from fitting                            [count]
@@ -358,10 +358,10 @@ FWHM_WORLD               FWHM assuming a gaussian core                          
 #SPHEROID_REFFERR_IMAGE   RMS error on fitted spheroid effective radius             [pixel]
 #SPHEROID_REFF_WORLD      Spheroid effective radius from fitting                    [deg]
 #SPHEROID_REFFERR_WORLD   RMS error on fitted spheroid effective radius             [deg]
-#SPHEROID_ASPECT_IMAGE    Spheroid aspect ratio from fitting                       
-#SPHEROID_ASPECTERR_IMAGE RMS error on fitted spheroid aspect ratio                
-#SPHEROID_ASPECT_WORLD    Spheroid aspect ratio from fitting                       
-#SPHEROID_ASPECTERR_WORLD RMS error on fitted spheroid aspect ratio                
+#SPHEROID_ASPECT_IMAGE    Spheroid aspect ratio from fitting
+#SPHEROID_ASPECTERR_IMAGE RMS error on fitted spheroid aspect ratio
+#SPHEROID_ASPECT_WORLD    Spheroid aspect ratio from fitting
+#SPHEROID_ASPECTERR_WORLD RMS error on fitted spheroid aspect ratio
 #SPHEROID_THETA_IMAGE     Spheroid position angle (CCW/x) from fitting              [deg]
 #SPHEROID_THETAERR_IMAGE  RMS error on spheroid position angle                      [deg]
 #SPHEROID_THETA_WORLD     Spheroid position angle (CCW/world-x)                     [deg]
@@ -369,8 +369,8 @@ FWHM_WORLD               FWHM assuming a gaussian core                          
 #SPHEROID_THETA_SKY       Spheroid position angle (east of north, native)           [deg]
 #SPHEROID_THETA_J2000     Spheroid position angle (east of north, J2000)            [deg]
 #SPHEROID_THETA_B1950     Spheroid position angle (east of north, B1950)            [deg]
-#SPHEROID_SERSICN         Spheroid Sersic index from fitting                       
-#SPHEROID_SERSICNERR      RMS error on fitted spheroid Sersic index                
+#SPHEROID_SERSICN         Spheroid Sersic index from fitting
+#SPHEROID_SERSICNERR      RMS error on fitted spheroid Sersic index
 #FLUX_DISK                Disk total flux from fitting                              [count]
 #FLUXERR_DISK             RMS error on fitted disk total flux                       [count]
 #MAG_DISK                 Disk total magnitude from fitting                         [mag]
@@ -385,10 +385,10 @@ FWHM_WORLD               FWHM assuming a gaussian core                          
 #DISK_SCALEERR_IMAGE      RMS error on fitted disk scalelength                      [pixel]
 #DISK_SCALE_WORLD         Disk scalelength from fitting (world coords)              [deg]
 #DISK_SCALEERR_WORLD      RMS error on fitted disk scalelength (world coords)       [deg]
-#DISK_ASPECT_IMAGE        Disk aspect ratio from fitting                           
-#DISK_ASPECTERR_IMAGE     RMS error on fitted disk aspect ratio                    
-#DISK_ASPECT_WORLD        Disk aspect ratio from fitting                           
-#DISK_ASPECTERR_WORLD     RMS error on disk aspect ratio                           
+#DISK_ASPECT_IMAGE        Disk aspect ratio from fitting
+#DISK_ASPECTERR_IMAGE     RMS error on fitted disk aspect ratio
+#DISK_ASPECT_WORLD        Disk aspect ratio from fitting
+#DISK_ASPECTERR_WORLD     RMS error on disk aspect ratio
 #DISK_INCLINATION         Disk inclination from fitting                             [deg]
 #DISK_INCLINATIONERR      RMS error on disk inclination from fitting                [deg]
 #DISK_THETA_IMAGE         Disk position angle (CCW/x) from fitting                  [deg]
