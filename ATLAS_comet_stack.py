@@ -4,6 +4,7 @@ Stack comet diff images. Creates a fits file that can be used to measure the ext
 import numpy as np
 import matplotlib.pyplot as pyplot
 import matplotlib.gridspec as gridspec
+from matplotlib.patches import Rectangle
 import glob
 import os
 
@@ -17,9 +18,28 @@ from ccdproc import wcs_project
 from astropy.nddata import CCDData
 from astropy import units as u
 
-path="./test_data/atlas_T05-T2394163-diff"
-file_list=glob.glob("{}/*.diff".format(path))
+tracklet="atlas_T08-T3753359"
+
+# choose which data to stack
+# fits_type="diff"
+fits_type="reduced"
+
+# choose which object to stack on
+stack_on="stars"
+# stack_on="comet"
+
+path="/Users/jrobinson/confirm-a-comet/{}/{}-{}".format(tracklet,tracklet,fits_type)
+print(path)
+if fits_type=="reduced":
+    file_list=glob.glob("{}/*.fits.fz".format(path))
+if fits_type=="diff":
+    file_list=glob.glob("{}/*.diff.fz".format(path))
+save_path=tracklet
+stack_save_file="{}_median_stack_{}.fits".format(tracklet,stack_on)
+
 file_list.sort()
+# file_list=np.delete(file_list,2) # drop a specific frame (e.g. comet close to star)
+file_list=file_list[::-1] # reverse order
 print(file_list)
 
 img_list=[]
@@ -44,18 +64,31 @@ for i,fi in enumerate(file_list):
     img = hdu[0].data
     hdr=hdu[0].header
 
+    # print(repr(hdr))
+    for key in ['DATE-OBS','OBSNAME','CRVAL1','CRVAL2','CRPIX1','CRPIX2']:
+        print("{}\t{}\t{}".format(key,hdr[key],hdr.comments[key]))
+
+    # print(hdr['CTYPE1'],hdr.comments['CTYPE1'])
+    # print(hdr['CTYPE2'],hdr.comments['CTYPE2'])
+
     if i==ref_file:
         orig_hdr=hdr.copy()
 
     # remove the extra keys from the ATLAS file
     key_keep_list=list(hdr_tpv.keys())
     del_list=[]
+    key_list=[]
     for key in list(hdr.keys()):
         if key not in key_keep_list:
             del_list.append(key)
+        else:
+            key_list.append(key)
 
     # drop duplicate entries, e.g. DATE
     del_list=list(dict.fromkeys(del_list))
+    # print(del_list)
+    del_list=[d for d in del_list if not d.startswith("PV")] # keep higher order PV terms
+    # print(del_list)
 
     # delete extra entries
     for key in del_list:
@@ -67,50 +100,62 @@ for i,fi in enumerate(file_list):
     del hdr['RADECSYS']
 
     # print(repr(hdr))
-    print(i,fi,hdr['DATE-OBS'])
+
     if i==ref_file:
         target_wcs=WCS(hdr)
         target_hdr=hdr
+    print(target_wcs)
 
-    img_list.append(img)
-    hdr_list.append(hdr)
+    hdu[0].data=img
+    hdu[0].header=hdr
 
     # print(repr(hdu[0].header))
-    hdu.writeto('test_results/{}_diff_fixed.fits'.format(fi.split("/")[-1].split(".diff")[0]),overwrite=True)
+
+    hdu.writeto('{}/{}_{}_fixed.fits'.format(save_path,fi.split("/")[-1].split(".diff")[0],fits_type),overwrite=True)
 
     hdu.close()
 
-fixed_file_list=glob.glob("test_results/*_fixed.fits")
+fixed_file_list=glob.glob("{}/*{}_fixed.fits".format(save_path,fits_type))
+# fixed_file_list=glob.glob("{}/{}/*.fits".format(save_path,tracklet))
+# fixed_file_list=fixed_file_list[:-1]
 print(fixed_file_list)
 
+print("\nload images\n")
 img_CCD_list=[]
 # load the fixed fits files as CCDdata objects
 for i,fi in enumerate(fixed_file_list):
-    img_CCD_list.append(CCDData.read(fi, unit=u.dimensionless_unscaled))
     print("\n{}:".format(fi))
-    print(img_CCD_list[-1].wcs)
+    img=CCDData.read(fi, unit=u.dimensionless_unscaled)
+    # print(repr(img.header))
+    # print(img.header[''])
+    if stack_on=="stars":
+        img = wcs_project(img, target_wcs) # transform to stack on background stars
+    img_CCD_list.append(img)
+    print(img_CCD_list[i].wcs)
+    print()
 
-# stack_img=1
-#
-# if stack_img==1:
+print("\nstack images\n")
 combiner = Combiner(img_CCD_list)
 combiner.sigma_clipping(low_thresh=2, high_thresh=2, func=np.ma.median)
+# scaling_func = lambda arr: 1/np.ma.average(arr)
+# combiner.scaling = scaling_func
 # stacked_image = combiner.average_combine()
 stacked_image = combiner.median_combine()
+# stacked_image = combiner.sum_combine()
 
 # stacked_image.wcs=target_wcs
-stacked_image.header=orig_hdr
-stacked_image.header['COMMENT']="this image was stacked with {}".format(os.path.basename(__file__))
+# stacked_image.header=orig_hdr
+stacked_image.header=target_hdr
+stacked_image.header['COMMENT']="this image was stacked with {} on".format(os.path.basename(__file__),stack_on)
 print("\n\n")
 print(stacked_image.wcs)
-# print(repr(stacked_image.header))
 
 # stacked_image.write('median_combiner.fits',overwrite=True,output_verify='fix')
 img=stacked_image.data
 
-# else:
-#     ccd_stack=CCDData.read('median_combiner.fits', unit=u.dimensionless_unscaled)
-#     img=ccd_stack.data
+# # subtract the image median?
+# print(' Mean = {:.2f}, Median = {:.2f}, Std. Dev.= {:.2f} '.format(np.mean(img), np.median(img), np.std(img)))
+# img=img-np.median(img)
 
 #set up the normalisation scheme for the image
 norm = aviz.ImageNormalize(img,interval=aviz.ZScaleInterval())
@@ -123,9 +168,22 @@ ax1 = pyplot.subplot(gs[0,0], projection = target_wcs)
 #display the image, note that you need to set the origin
 s1=ax1.imshow(img, norm=norm, origin='lower')
 
-cbar1=fig.colorbar(s1)
+# draw a box around the centre
+r_len=25
+x_cent=len(img[0,:])/2
+y_cent=len(img[:,0])/2
+r = Rectangle((x_cent-r_len, y_cent-r_len), 2*r_len, 2*r_len, edgecolor='yellow', facecolor='none')
+ax1.add_patch(r)
 
-outfile = 'test_results/comet_median_stack.fits'
+cbar1=fig.colorbar(s1)
+ax1.set_xlabel("RA")
+ax1.set_ylabel("DEC")
+
+cbar1.set_label("counts")
+
+# display as pythion based visulaiser
+
+outfile = '{}/{}'.format(save_path,stack_save_file)
 fits.writeto(outfile,stacked_image.data,stacked_image.header,overwrite=True,output_verify='fix')
 print("save stacked file: {}".format(outfile))
 
